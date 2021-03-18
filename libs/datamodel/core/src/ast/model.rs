@@ -18,6 +18,16 @@ pub struct Model {
 }
 
 impl Model {
+    pub fn final_database_name(&self) -> &str {
+        self.attributes
+            .iter()
+            .find(|attr| attr.name() == "map")
+            .and_then(|attr| attr.arguments.get(0))
+            .and_then(|arg| arg.value.as_string_value())
+            .map(|(n, _)| n)
+            .unwrap_or(&self.name.name)
+    }
+
     pub fn find_field(&self, name: &str) -> &Field {
         self.fields
             .iter()

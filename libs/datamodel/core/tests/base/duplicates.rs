@@ -22,6 +22,30 @@ fn fail_on_duplicate_models() {
     ));
 }
 
+#[test]
+fn fail_on_duplicate_models_with_map() {
+    let dml = r#"
+        model Customer {
+            id Int @id
+
+            @@map("User")
+        }
+
+        model User {
+            id Int @id
+        }
+    "#;
+
+    let errors = parse_error(dml);
+
+    errors.assert_is(DatamodelError::new_duplicate_top_error(
+        "User",
+        "model",
+        "model",
+        Span::new(101, 105),
+    ));
+}
+
 // From issue: https://github.com/prisma/prisma/issues/1988
 #[test]
 fn fail_on_duplicate_models_with_relations() {
