@@ -39,7 +39,9 @@ thiserror = "1.0"
 tide = { version = "0.15.0", default-features = false, features = ["h1-server", "logger"] }
 tide-server-timing = "0.15.0"
 url = "2.1"
+log = "0.4.14"
 
+chrono = "0.4"
 tracing = "0.1"
 tracing-opentelemetry = "0.11"
 tracing-attributes = "0.1"
@@ -79,4 +81,5 @@ features = [
   "mssql",
   "bigdecimal",
 ]
-git = "https://github.com/prisma/quaint"
+git = "https://github.com/sytten/quaint"
+branch = "master"

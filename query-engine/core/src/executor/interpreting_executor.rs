@@ -3,6 +3,7 @@ use crate::{Operation, QueryGraphBuilder, QueryInterpreter, QuerySchemaRef, Resp
 use async_trait::async_trait;
 use connector::{Connection, ConnectionLike, Connector};
 use futures::future;
+use chrono::prelude::*;
 
 /// Central query executor and main entry point into the query core.
 pub struct InterpretingExecutor<C> {
@@ -85,6 +86,7 @@ where
                 .map(|op| QueryGraphBuilder::new(query_schema.clone()).build(op))
                 .collect::<std::result::Result<Vec<_>, _>>()?;
 
+            info!("Getting connection trx {}", Utc::now());
             let conn = self.connector.get_connection().await?;
             let tx = conn.start_transaction().await?;
             let mut results = Vec::with_capacity(queries.len());
@@ -106,6 +108,7 @@ where
             let mut futures = Vec::with_capacity(operations.len());
 
             for operation in operations {
+                info!("Getting connection batch {}", Utc::now());
                 let conn = self.connector.get_connection().await?;
                 futures.push(tokio::spawn(Self::execute_single_operation(
                     operation,
@@ -127,6 +130,7 @@ where
 
     /// Executes a single operation. Execution will be inside of a transaction or not depending on the needs of the query.
     async fn execute(&self, operation: Operation, query_schema: QuerySchemaRef) -> crate::Result<ResponseData> {
+        info!("Getting connection {}", Utc::now());
         let conn = self.connector.get_connection().await?;
         Self::execute_single_operation(operation, conn, self.force_transactions, query_schema.clone()).await
     }

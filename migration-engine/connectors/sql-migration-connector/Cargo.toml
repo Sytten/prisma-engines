@@ -30,7 +30,8 @@ url = "2.1.1"
 uuid = { version = "0.8", features = ["v4"] }
 
 [dependencies.quaint]
-git = "https://github.com/prisma/quaint"
+git = "https://github.com/sytten/quaint"
+branch = "master"
 features = [
     "json",
     "uuid",

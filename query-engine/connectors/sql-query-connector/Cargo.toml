@@ -34,7 +34,8 @@ features = [
   "bigdecimal",
   "serde-support"
 ]
-git = "https://github.com/prisma/quaint"
+git = "https://github.com/sytten/quaint"
+branch = "master"
 
 [dependencies.connector-interface]
 package = "query-connector"

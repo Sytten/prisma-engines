@@ -41,6 +41,7 @@ url = "2.1.1"
 connection-string = "0.1.13"
 
 [dependencies.quaint]
-git = "https://github.com/prisma/quaint"
+git = "https://github.com/sytten/quaint"
+branch = "master"
 optional = true
 features = ["serde-support", "vendored-openssl"]

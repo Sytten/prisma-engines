@@ -16,7 +16,8 @@ tracing-error = "0.1.2"
 connection-string = "0.1.10"
 
 [dependencies.quaint]
-git = "https://github.com/prisma/quaint"
+git = "https://github.com/sytten/quaint"
+branch = "master"
 optional = true
 features = [
     "postgresql",

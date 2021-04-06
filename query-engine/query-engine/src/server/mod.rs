@@ -17,6 +17,7 @@ use tracing_futures::Instrument;
 use tracing_opentelemetry::OpenTelemetrySpanExt;
 
 use std::{collections::HashMap, sync::Arc};
+use chrono::prelude::*;
 
 mod elapsed_middleware;
 
@@ -99,6 +100,7 @@ async fn graphql_handler(mut req: Request<State>) -> tide::Result {
         }
     }
 
+    info!("Request received {}", Utc::now());
     let cx = get_parent_span_context(&req);
     let span = tracing::span!(Level::TRACE, "graphql_handler");
     span.set_parent(cx);

@@ -2418,8 +2418,9 @@ checksum = "e5ce46fe64a9d73be07dcbe690a38ce1b293be448fd8ce1e6c1b8062c9f72c6a"
 
 [[package]]
 name = "mysql_async"
-version = "0.27.0"
-source = "git+https://github.com/prisma/mysql_async?branch=vendored-openssl#a38f0aced7bb981cf50d4b7728f8f9b9a642c7e6"
+version = "0.27.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9bbc817368f1989a90d541834eda5d9a5b56405cea2f916956efb0fa472d3a27"
 dependencies = [
  "bytes 1.0.1",
  "futures-core",
@@ -2437,7 +2438,7 @@ dependencies = [
  "serde_json",
  "thiserror",
  "tokio",
- "tokio-native-tls",
+ "tokio-native-tls 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tokio-util",
  "twox-hash",
  "url 2.2.1",
@@ -2991,7 +2992,7 @@ dependencies = [
  "futures 0.3.13",
  "native-tls",
  "tokio",
- "tokio-native-tls",
+ "tokio-native-tls 0.3.0 (git+https://github.com/pimeys/tls?branch=vendored-openssl)",
  "tokio-postgres",
 ]
 
@@ -3237,7 +3238,7 @@ dependencies = [
 [[package]]
 name = "quaint"
 version = "0.2.0-alpha.13"
-source = "git+https://github.com/prisma/quaint#fd9282727ee1daa0b42d500d7c623bc4d1e73e26"
+source = "git+https://github.com/sytten/quaint?branch=master#26138ffd20559435b1d9b5d6e0b40e74a275c933"
 dependencies = [
  "async-trait",
  "base64 0.12.3",
@@ -3350,6 +3351,7 @@ dependencies = [
  "indexmap",
  "indoc",
  "itertools 0.8.2",
+ "log",
  "migration-connector",
  "migration-core",
  "mongodb-query-connector",
@@ -4586,6 +4588,16 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "tokio-native-tls"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7d995660bd2b7f8c1568414c1126076c13fbb725c40112dc0120b78eb9b717b"
+dependencies = [
+ "native-tls",
+ "tokio",
 ]
 
 [[package]]
